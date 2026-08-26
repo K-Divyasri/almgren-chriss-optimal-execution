@@ -1,0 +1,16 @@
+# Core
+numpy>=1.26
+scipy>=1.11
+pandas>=2.0
+
+# Plots + the Streamlit dashboard
+matplotlib>=3.8
+streamlit>=1.32
+
+# Dev / tests
+pytest>=8.0
+
+# The acexec package itself, installed from this same directory. Needed so
+# `streamlit run app.py` (and Streamlit Community Cloud's own
+# `pip install -r requirements.txt`) can `import acexec`.
+-e .
