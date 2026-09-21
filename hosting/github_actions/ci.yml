@@ -1,22 +1,15 @@
 # Copy this file to .github/workflows/ci.yml at the repo root (GitHub only
 # discovers workflow files there) to run the test suite on every push and
-# pull request touching this project.
+# pull request.
 name: acexec CI
 
 on:
   push:
-    paths:
-      - "42-almgren-chriss-optimal-execution/build_from_scratch/**"
   pull_request:
-    paths:
-      - "42-almgren-chriss-optimal-execution/build_from_scratch/**"
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: 42-almgren-chriss-optimal-execution/build_from_scratch
     steps:
       - uses: actions/checkout@v4
 

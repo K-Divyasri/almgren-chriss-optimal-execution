@@ -4,13 +4,13 @@ Run through this before deploying the dashboard anywhere.
 
 ## Before your first deploy
 
-- [ ] `cd build_from_scratch && pip install -e ".[dashboard]"` succeeds locally
+- [ ] `pip install -e ".[dashboard]"` succeeds locally
 - [ ] `python -m pytest -q` passes (34 tests as of this writing)
 - [ ] `streamlit run app.py` works locally and every tab/slider responds
       without an error in the terminal
 - [ ] `git status` from the repo root — make sure only the intended files
       are tracked (no stray `__pycache__/`, `.pytest_cache/`, or
-      `*.egg-info/` directories; `build_from_scratch/.gitignore` already
+      `*.egg-info/` directories; `.gitignore` already
       excludes these)
 - [ ] If deploying to a **public** GitHub repo (required for the free tier
       of Streamlit Community Cloud), double check there's nothing sensitive
@@ -21,16 +21,15 @@ Run through this before deploying the dashboard anywhere.
 
 - [ ] The repo is pushed to GitHub
 - [ ] Main file path is set to
-      `42-almgren-chriss-optimal-execution/build_from_scratch/app.py`
-      (not just `app.py` — Streamlit Cloud needs the full path from the
-      repo root when the app isn't at the top level)
+      `app.py` (the app is at the repo root, so no subfolder prefix is
+      needed)
 - [ ] First deploy's build log shows `acexec` installing successfully (look
       for a line building the "editable" wheel for `acexec`, confirming the
       `-e .` line in `requirements.txt` was picked up)
 
 ## Docker specifically
 
-- [ ] `docker build -t acexec-dashboard build_from_scratch` completes with
+- [ ] `docker build -t acexec-dashboard .` completes with
       no errors
 - [ ] `docker run -p 8501:8501 acexec-dashboard` serves the app, and
       `curl http://localhost:8501/_stcore/health` returns `ok`
